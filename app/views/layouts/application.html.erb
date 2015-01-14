@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link_Age</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><b>Link_Age</b></a> 
+      <small class="navbar-brand">It's kinda like "Hacker News", I guess?</small>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if @user && @user.id %> 
+          
+          <li><%= link_to @user.email, :logout, :class => "btn btn-link data-toggle='tooltip' data-placement='bottom' title='Logout'" %></li>
+        <% else %> 
+          <li><%= link_to "Login", :login, :class => "btn btn-link" %></li>
+          <li><%= link_to "Sign Up", :signup, :class => "btn btn-link" %></li>
+        <% end %> 
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

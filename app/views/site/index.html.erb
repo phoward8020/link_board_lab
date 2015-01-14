@@ -1,0 +1,38 @@
+<%= render "flash_message" %> 
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>xxx</th>
+      <th><span><%= link_to "New Post", new_post_path, :class => "btn btn-xs btn-primary pull-right" %> </span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %> 
+      <% @user = User.find_by_id(post.user_id) %>
+      <tr>
+        <td colspan="2">
+          <lead><a href="<%= post.link %>"><lead><%= post.title %></lead></a> <small>(<%= post.link %>)</small></lead> <br>
+          <p><small>by <%= @user.name %> <%= format_creation_time(post) %></small></p>
+        </td>
+      </tr>
+    <% end %> 
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    

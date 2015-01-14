@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>New Post</h1>
+  </div>
+</div>
+
+<%= render "flash_message" %> 
+
+<% if @post.errors.any? %>
+<ul class="list-group">
+  <% @post.errors.full_messages.each do |msg| %> 
+    <li class="list-group-item"><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= bootstrap_form_for :posts do |f| %> 
+    <%= f.text_field :title, placeholder: "Title" %> 
+    <%= f.text_field :link, placeholder: "Link" %>
+    <%= f.submit "Post", :class => "btn btn-primary" %> 
+    <% end %> 
+  </div>
+</div>
+
+</div>
